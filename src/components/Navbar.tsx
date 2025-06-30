@@ -36,15 +36,15 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass-morphism border-b border-border/20">
+    <nav className="fixed top-0 w-full z-50 bg-black border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center animate-pulse-glow">
+            <div className="w-8 h-8 bg-sky-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">I</span>
             </div>
-            <span className="text-xl font-bold gradient-text">Inkzaar</span>
+            <span className="text-xl font-bold text-sky-500">Inkzaar</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -55,8 +55,8 @@ const Navbar = () => {
                 to={path}
                 className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-all duration-300 ${
                   isActive(path)
-                    ? 'text-primary bg-primary/10 neon-glow'
-                    : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
+                    ? 'text-sky-500 bg-sky-500/10'
+                    : 'text-gray-300 hover:text-sky-500 hover:bg-sky-500/5'
                 }`}
               >
                 <Icon size={16} />
@@ -71,10 +71,10 @@ const Navbar = () => {
               <>
                 {/* Cart */}
                 <Link to="/cart" className="relative">
-                  <Button variant="ghost" size="sm" className="relative hover:bg-primary/10">
+                  <Button variant="ghost" size="sm" className="relative">
                     <ShoppingCart size={20} />
                     {totalItems > 0 && (
-                      <Badge className="absolute -top-2 -right-2 bg-accent text-accent-foreground">
+                      <Badge className="absolute -top-2 -right-2 bg-sky-500 text-white">
                         {totalItems}
                       </Badge>
                     )}
@@ -83,24 +83,24 @@ const Navbar = () => {
 
                 {/* User Menu */}
                 <div className="relative group">
-                  <Button variant="ghost" size="sm" className="flex items-center space-x-2 hover:bg-primary/10">
+                  <Button variant="ghost" size="sm" className="flex items-center space-x-2">
                     <User size={20} />
                     <span className="hidden sm:block">{user.name}</span>
                   </Button>
                   
                   {/* Dropdown */}
-                  <div className="absolute right-0 mt-2 w-48 glass-morphism rounded-lg border border-border/20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <div className="absolute right-0 mt-2 w-48 bg-black border border-gray-800 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                     <div className="p-2">
                       <Link
                         to={user.role === 'admin' ? '/admin' : '/dashboard'}
-                        className="flex items-center space-x-2 w-full text-left p-2 rounded hover:bg-primary/10 transition-colors"
+                        className="flex items-center space-x-2 w-full text-left p-2 rounded hover:bg-sky-500/10 text-gray-300 hover:text-sky-500 transition-colors"
                       >
                         <Settings size={16} />
                         <span>Dashboard</span>
                       </Link>
                       <button
                         onClick={logout}
-                        className="flex items-center space-x-2 w-full text-left p-2 rounded hover:bg-destructive/10 text-destructive transition-colors"
+                        className="flex items-center space-x-2 w-full text-left p-2 rounded hover:bg-red-500/10 text-red-400 hover:text-red-300 transition-colors"
                       >
                         <LogOut size={16} />
                         <span>Logout</span>
@@ -112,12 +112,12 @@ const Navbar = () => {
             ) : (
               <div className="flex items-center space-x-2">
                 <Link to="/login">
-                  <Button variant="ghost" size="sm" className="hover:bg-primary/10">
+                  <Button variant="ghost" size="sm">
                     Login
                   </Button>
                 </Link>
                 <Link to="/signup">
-                  <Button size="sm" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 animate-pulse-glow">
+                  <Button size="sm">
                     Sign Up
                   </Button>
                 </Link>
@@ -138,7 +138,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border/20">
+          <div className="md:hidden py-4 border-t border-gray-800">
             <div className="flex flex-col space-y-2">
               {navLinks.map(({ path, label, icon: Icon }) => (
                 <Link
@@ -147,8 +147,8 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 ${
                     isActive(path)
-                      ? 'text-primary bg-primary/10'
-                      : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
+                      ? 'text-sky-500 bg-sky-500/10'
+                      : 'text-gray-300 hover:text-sky-500 hover:bg-sky-500/5'
                   }`}
                 >
                   <Icon size={16} />
